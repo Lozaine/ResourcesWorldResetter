@@ -1,7 +1,7 @@
 name: ResourceWorldResetter
-version: '1.0'
+version: '2.0'
 main: com.lozaine.ResourceWorldResetter.ResourceWorldResetter
-api-version: 1.19
+api-version: '1.21'  # Updated to 1.21
 depend: [Multiverse-Core]
 author: Lozaine
 description: A plugin to reset the resources world at regular intervals.
