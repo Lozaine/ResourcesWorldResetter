@@ -1,0 +1,86 @@
+# ================================
+#   ResourceWorldResetter Config
+# ================================
+#
+# This configuration file controls the behavior of the ResourceWorldResetter plugin.
+# Please read the comments carefully before making any changes.
+#
+# For more information, visit: https://github.com/Lozaine/ResourceWorldResetter
+
+# --------------------------------
+#  World Settings
+# --------------------------------
+
+# The name of the resource world to reset
+# This world must exist or be creatable by Multiverse-Core
+world-name: ""
+
+# --------------------------------
+#  Reset Schedule
+# --------------------------------
+
+# Interval between resets (in seconds)
+# This value is converted to a Duration in the code
+# Default: 86400 (24 hours)
+reset-interval-seconds: 86400
+
+# Time of day to perform the reset (24-hour format)
+# This value is converted to a LocalTime in the code
+# Format: "HH:mm"
+reset-time: "03:00"
+
+# --------------------------------
+#  Teleportation Settings
+# --------------------------------
+
+# Use player's bed spawn location for teleportation if available
+# If false or bed spawn is not set, players will be teleported to the main world spawn
+use-bed-spawn: false
+
+# The world to teleport players to if they don't have a bed spawn
+# or if use-bed-spawn is false
+# Default: "world" (usually the overworld)
+fallback-world: "world"
+
+# --------------------------------
+#  Notification Settings
+# --------------------------------
+
+# List of times (in seconds) before reset to notify players
+# Default: [300, 180, 60, 30, 10]
+notification-times:
+  - 300  # 5 minutes
+  - 180  # 3 minutes
+  - 60   # 1 minute
+  - 30   # 30 seconds
+  - 10   # 10 seconds
+
+# --------------------------------
+#  Advanced Settings
+# --------------------------------
+
+# Maximum number of attempts to create the world if it fails
+max-creation-attempts: 3
+
+# Delay between world creation attempts (in milliseconds)
+creation-retry-delay: 5000
+
+# List of game rules to apply to the new world after reset
+# Format: GAME_RULE_NAME: value
+game-rules:
+  DO_DAYLIGHT_CYCLE: true
+  DO_MOB_SPAWNING: true
+  DO_FIRE_TICK: true
+  KEEP_INVENTORY: false
+
+# --------------------------------
+#  Debug Settings
+# --------------------------------
+
+# Enable debug logging (true/false)
+# Warning: This may generate a lot of log entries
+debug-mode: false
+
+# ================================
+#   End of Configuration
+# ================================
