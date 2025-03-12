@@ -1,5 +1,6 @@
 package com.lozaine.rwr.listeners;
 
+import com.lozaine.rwr.ResourceWorldResetter;
 import com.lozaine.rwr.commands.GuiCommand;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

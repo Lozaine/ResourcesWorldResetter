@@ -11,8 +11,10 @@ import org.bukkit.scheduler.BukkitRunnable;
 import com.onarandombox.MultiverseCore.MultiverseCore;
 import com.onarandombox.MultiverseCore.api.MVWorldManager;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
 public class ResourceWorldResetter extends JavaPlugin {
@@ -67,7 +69,7 @@ public class ResourceWorldResetter extends JavaPlugin {
         }
     }
 
-    private void loadWorld() {
+    public void loadWorld() {
         try {
             World world = Bukkit.getWorld(worldName);
             if (world == null) {
@@ -97,7 +99,7 @@ public class ResourceWorldResetter extends JavaPlugin {
         }
     }
 
-    private void scheduleDailyReset() {
+    public void scheduleDailyReset() {
         try {
             LocalDateTime now = LocalDateTime.now();
             LocalTime resetTime = LocalTime.of(restartTime, 0);
@@ -107,7 +109,7 @@ public class ResourceWorldResetter extends JavaPlugin {
                 nextReset = nextReset.plusDays(1);
             }
 
-            long delay = java.time.Duration.between(now, nextReset).toSeconds();
+            long delay = Duration.between(now, nextReset).toSeconds();
             long warningDelay = delay - (resetWarningTime * 60); // Convert warning time to seconds
 
             // Schedule the announcement
@@ -139,7 +141,7 @@ public class ResourceWorldResetter extends JavaPlugin {
         }
     }
 
-    private void resetResourceWorld() {
+    public void resetResourceWorld() {
         try {
             World world = Bukkit.getWorld(worldName);
             if (world == null) {
@@ -286,5 +288,38 @@ public class ResourceWorldResetter extends JavaPlugin {
             getLogger().log(Level.SEVERE, "Error reloading plugin", e);
             sender.sendMessage("§cAn error occurred while reloading the plugin.");
         }
+    }
+
+    public void setWorldName(String worldName) {
+        this.worldName = worldName;
+    }
+
+    public String getWorldName() {
+        return worldName;
+    }
+
+    public void setResetInterval(long resetInterval) {
+        this.resetInterval = resetInterval;
+    }
+
+    public long getResetInterval() {
+        return resetInterval;
+    }
+
+    public void setResetInterval(long interval, TimeUnit unit) {
+    }
+
+    public void setRestartTime(int restartTime) {
+        this.restartTime = restartTime;
+    }
+
+    public int getRestartTime() {
+        return restartTime;
+    }
+
+    public void reloadPlugin() {
+    }
+
+    public void setRestartTime(int hour, int minute) {
     }
 }

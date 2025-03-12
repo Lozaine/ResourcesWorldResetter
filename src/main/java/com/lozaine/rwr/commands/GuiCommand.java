@@ -1,5 +1,6 @@
 package com.lozaine.rwr.commands;
 
+import com.lozaine.rwr.ResourceWorldResetter;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;
