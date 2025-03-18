@@ -4,111 +4,73 @@
   <img src="https://files.catbox.moe/xhfveh.png" alt="project-image">
 </p>
 
-<p align="center">
-  Automatically resets resources in one world regularly for fresh materials without affecting others!
-</p>
+## Overview
+ResourceWorldResetter is a Spigot/Bukkit plugin designed to automatically manage and reset a designated resource world at scheduled intervals. It's perfect for Minecraft servers that want to provide fresh resources to players without completely resetting the entire server.
 
-<p align="center">
-  <a href="https://github.com/Lozaine/ResourceWorldResetter">
-    <img src="https://img.shields.io/github/v/release/Lozaine/ResourceWorldResetter?style=for-the-badge" alt="GitHub release">
-  </a>
-  <a href="https://github.com/Lozaine/ResourceWorldResetter/issues">
-    <img src="https://img.shields.io/github/issues/Lozaine/ResourceWorldResetter?style=for-the-badge" alt="GitHub issues">
-  </a>
-  <a href="https://github.com/Lozaine/ResourceWorldResetter/pulls">
-    <img src="https://img.shields.io/github/issues-pr/Lozaine/ResourceWorldResetter?style=for-the-badge" alt="GitHub pull requests">
-  </a>
-  <a href="https://github.com/Lozaine/ResourceWorldResetter/stargazers">
-    <img src="https://img.shields.io/github/stars/Lozaine/ResourceWorldResetter?style=for-the-badge" alt="GitHub stars">
-  </a>
-</p>
+## Features
+- **Automatic World Creation**: Automatically creates a "Resources" world if it doesn't exist
+- **Scheduled Resets**: Resets the resource world on a configurable schedule
+- **Warning System**: Warns players before a reset occurs
+- **Player Safety**: Automatically teleports players out of the resource world before reset
+- **Admin Commands**: Full set of commands to control all aspects of the plugin
+- **Multiverse Integration**: Leverages Multiverse-Core for stable world management
 
-## 🚀 Features
+## Requirements
+- Minecraft 1.21.4
+- Java 17 or higher
+- Multiverse-Core 4.3.1 or higher
 
-Here are some of the project's best features:
+## Installation
+1. Download the latest release from the [Releases](https://github.com/yourusername/ResourceWorldResetter/releases) page
+2. Place the JAR file in your server's `plugins` folder
+3. Start or restart your server
+4. The plugin will create a default configuration and a "Resources" world automatically
 
-- 🔄 **Automatic World Reset**: Resets a specific world at a regular interval (default 24 hours).
-- 🌍 **Configurable World**: Admins can choose which world to reset.
-- 🕒 **Customizable Timing**: Set reset intervals, restart times, and player warnings.
-- ⚠️ **Teleports Players to Safety**: Automatically teleports all players out of the resource world before the reset.
+## Configuration (config.yml)
+```yaml
+worldName: "Resources"    # The world to reset (defaults to "Resources")
+resetWarningTime: 5       # Time (in minutes) to warn players before reset
+resetInterval: 86400      # Time (in seconds) between resets (e.g., 24 hours = 86400)
+restartTime: 3            # Time of day to reset (3 AM by default)
+```
 
-## 🛠️ Installation Steps
+## Commands
+| Command | Description | Permission |
+|---------|-------------|------------|
+| `/setworld <worldname>` | Set the resource world name | resourceworldresetter.admin |
+| `/setresetinterval <hours>` | Set the reset interval in hours | resourceworldresetter.admin |
+| `/setrestarttime <hour>` | Set the daily reset time (24hr format) | resourceworldresetter.admin |
+| `/resetworld` | Force an immediate reset of the resource world | resourceworldresetter.admin |
+| `/reloadworldresetter` | Reload the plugin configuration | resourceworldresetter.admin |
 
-1. Download the `ResourceWorldResetter` plugin and place the `.jar` file in the `plugins` folder of your Minecraft server.
-2. Ensure [Multiverse-Core](https://dev.bukkit.org/projects/multiverse-core) is also installed and placed in your server's plugins folder.
-3. **Start the server** once to generate the default configuration file. You will see an error message similar to this:
-   
-   ![error-screenshot](https://files.catbox.moe/k6wcnt.png)
+## Permissions
+- `resourceworldresetter.admin` - Allows access to all plugin commands
 
-   ```yaml
-   Error: No world name specified in the config file! Please set 'worldName' in the config.yml.
-   ```
+## What's New in Version 2.0
+- Updated to support Minecraft 1.21.4
+- Now requires Java 17
+- Automatically creates the resource world named "Resources"
+- Improved error handling and user feedback
+- Added prefix to all plugin messages
+- Better scheduling of reset events
+- Improved world reset process
 
-4. After the error appears, stop the server and navigate to the `plugins/ResourceWorldResetter` folder. Open the `config.yml` file and modify the following settings:
+## Building from Source
+This project uses Gradle:
 
-   ```yaml
-   worldName: ""        # The world to reset
-   resetWarningTime: 5   # Time (in minutes) to warn players before reset
-   resetInterval: 86400  # Time (in seconds) between resets (e.g., 24 hours = 86400)
-   restartTime: 21       # Server restart time (24-hour format)
-   ```
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/ResourceWorldResetter.git
 
-5. Set the `worldName` to the world you want to reset. This only affects the specified world, not the entire server.
-6. Save the `config.yml` file and restart your server.
+# Navigate to the project directory
+cd ResourceWorldResetter
 
-## 🔧 Usage
+# Build with Gradle
+./gradlew build
+```
 
-- `/setworld <worldname>` to set the resource world that will be reset.
-- `/setresetinterval <hours>` to set how often the world resets (in hours).
-- `/setrestarttime <hour>` to set the daily restart time (24-hour format).
-- `/resetworld` to force an immediate reset of the resource world.
+## Support
+If you encounter any issues or have questions, please create an issue on the GitHub repository.
 
-## ⏰ How the World Reset Time Works
-
-The reset time in the **ResourceWorldResetter** plugin is based on the server's **local system time**, meaning it follows the **timezone of the server's operating system**. 
-
-### Key Details:
-1. **Local Time Fetching**:  
-   The plugin uses the Java method `LocalDateTime.now()`, which captures the current time based on the server’s clock and timezone.
-
-2. **Reset Scheduling**:  
-   When you use the `/setrestarttime <hour>` command, the plugin schedules the reset based on the **server's current local time** (e.g., UTC, PST).
-
-3. **Adjusting Timezones**:  
-   If you need the reset to happen in a specific timezone, adjust the server’s timezone.
-
-## ⚠️ Critical Warnings
-
-### Important Note for Older Minecraft Versions: [Read Here](https://loz-seas-organization.gitbook.io/resourcesworldresetter/important-note-for-older-minecraft-versions/quickstart)
-
-⚠️ **Critical Warning: No Recovery for Mistaken World Resets**
-
-Once a world is reset, **the world and all data are permanently deleted**, including player structures, inventories, and progress.
-
-- **No built-in recovery** is available for worlds that have been reset. 
-- Always **backup** your world files before configuring and using this plugin.
-
-## 📚 Dependencies
-
-Before using **ResourceWorldResetter**, ensure you have installed the following plugins:
-
-- [Multiverse-Core](https://dev.bukkit.org/projects/multiverse-core): Required for managing world creation, unloading, and deletion.
-
-
-## 📄 License
-
-This project is licensed under the BSD 3-Clause License - see the [LICENSE](LICENSE) file for details.
-
----
-
-<p align="center">
-  <a href="https://github.com/Lozaine/ResourceWorldResetter">
-    <img src="https://img.shields.io/github/forks/Lozaine/ResourceWorldResetter?style=social" alt="GitHub forks">
-  </a>
-  <a href="https://github.com/Lozaine/ResourceWorldResetter">
-    <img src="https://img.shields.io/github/watchers/Lozaine/ResourceWorldResetter?style=social" alt="GitHub watchers">
-  </a>
-  <a href="https://github.com/Lozaine/ResourceWorldResetter/stargazers">
-    <img src="https://img.shields.io/github/stars/Lozaine/ResourceWorldResetter?style=social" alt="GitHub stars">
-  </a>
-</p>
+## License
+This project is licensed under BSD 3-Clause License - see the LICENSE file for details.
