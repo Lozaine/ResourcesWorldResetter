@@ -22,7 +22,7 @@ ResourceWorldResetter is a Spigot/Bukkit plugin designed to automatically manage
 - Multiverse-Core 4.3.1 or higher
 
 ## Installation
-1. Download the latest release from the [Releases](https://github.com/yourusername/ResourceWorldResetter/releases) page
+1. Download the latest release from the [Releases](https://github.com/Lozaine/ResourceWorldResetter/releases) page
 2. Place the JAR file in your server's `plugins` folder
 3. Start or restart your server
 4. The plugin will create a default configuration and a "Resources" world automatically
@@ -79,7 +79,7 @@ cd ResourceWorldResetter
 ```
 
 ## Support
-If you encounter any issues or have questions, please create an issue on the GitHub repository or join Discord server: https://discord.gg/Y3UuG7xu9x
+If you encounter any issues or have questions, please create an issue on the GitHub repository or join Discord server here: https://discord.gg/Y3UuG7xu9x
 
 ## License
 This project is licensed under BSD 3-Clause License - see the LICENSE file for details.
