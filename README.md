@@ -14,6 +14,7 @@ ResourceWorldResetter is a Spigot/Bukkit plugin designed to automatically manage
 - **Player Safety**: Automatically teleports players out of the resource world before reset
 - **Admin Commands**: Full set of commands to control all aspects of the plugin
 - **Multiverse Integration**: Leverages Multiverse-Core for stable world management
+- **Asynchronous Operations**: Uses background threads for resource-intensive operations to maintain server performance
 
 ## Requirements
 - Minecraft 1.21.4
@@ -46,14 +47,22 @@ restartTime: 3            # Time of day to reset (3 AM by default)
 ## Permissions
 - `resourceworldresetter.admin` - Allows access to all plugin commands
 
-## What's New in Version 2.0
+## Performance Optimization
+### Asynchronous Operations
+ResourceWorldResetter uses background threads for resource-intensive operations to prevent server lag:
+
+- **File I/O Operations**: World deletion and file operations run asynchronously to avoid blocking the main server thread
+- **World Management**: The plugin carefully manages the reset process to minimize impact on server performance
+- **Safe Thread Handling**: Operations that must run on the main thread (like Bukkit API calls) are properly scheduled
+
+This approach prevents lag spikes during world resets, ensuring your server remains responsive even during maintenance operations.
+
+## What's New in Version 2.1
+- Improved asynchronous operations for better server performance
 - Updated to support Minecraft 1.21.4
-- Now requires Java 17
-- Automatically creates the resource world named "Resources"
-- Improved error handling and user feedback
-- Added prefix to all plugin messages
-- Better scheduling of reset events
-- Improved world reset process
+- Enhanced error handling and recovery mechanisms
+- Optimized world deletion process
+- Added more detailed logging for troubleshooting
 
 ## Building from Source
 This project uses Gradle:
@@ -70,7 +79,7 @@ cd ResourceWorldResetter
 ```
 
 ## Support
-If you encounter any issues or have questions, please create an issue on the GitHub repository.
+If you encounter any issues or have questions, please create an issue on the GitHub repository or join Discord server: https://discord.gg/Y3UuG7xu9x
 
 ## License
 This project is licensed under BSD 3-Clause License - see the LICENSE file for details.
