@@ -1,4 +1,4 @@
-worldName: ""      # The world to reset
-resetWarningTime: 5         # Time (in minutes) to warn players before reset
-resetInterval: 86400        # Time (in seconds) between resets (e.g., 24 hours = 86400)
-restartTime: 3              # Server restart time (3 AM by default)
+worldName: "Resources"    # Default world name set to "Resources"
+resetWarningTime: 5       # Time (in minutes) to warn players before reset
+resetInterval: 86400      # Time (in seconds) between resets (e.g., 24 hours = 86400)
+restartTime: 3            # Server restart time (3 AM by default)

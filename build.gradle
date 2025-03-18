@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'com.lozaine'
-version '2.0'  // Updated version number
+version '2.1.0'
 
 repositories {
     mavenCentral()
@@ -12,12 +12,12 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'org.spigotmc:spigot-api:1.21.4-R0.1-SNAPSHOT'  // Updated to 1.21.4
+    compileOnly 'org.spigotmc:spigot-api:1.21.4-R0.1-SNAPSHOT'
     compileOnly 'com.onarandombox.multiversecore:Multiverse-Core:4.3.1'
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17  // Updated to Java 17
+    sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
 }
 
@@ -28,7 +28,7 @@ tasks.withType(JavaCompile) {
 jar {
     manifest {
         attributes(
-                'Main-Class': 'main: com.lozaine.rwr.ResourceWorldResetter'
+                'Main-Class': 'com.lozaine.ResourceWorldResetter.ResourceWorldResetter'
         )
     }
 }

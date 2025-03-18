@@ -1,5 +1,5 @@
 name: ResourceWorldResetter
-version: '2.0'
+version: '2.1.0'
 main: com.lozaine.ResourceWorldResetter.ResourceWorldResetter
 api-version: '1.21'  # Updated to 1.21
 depend: [Multiverse-Core]
