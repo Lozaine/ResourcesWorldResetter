@@ -2,3 +2,4 @@ worldName: "Resources"    # Default world name set to "Resources"
 resetWarningTime: 5       # Time (in minutes) to warn players before reset
 resetInterval: 86400      # Time (in seconds) between resets (e.g., 24 hours = 86400)
 restartTime: 3            # Server restart time (3 AM by default)
+updateCheckUrl: "https://api.github.com/repos/Lozaine/ResourceWorldResetter/releases/latest"  # URL to check for updates

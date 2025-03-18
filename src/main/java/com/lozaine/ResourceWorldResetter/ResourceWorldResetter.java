@@ -6,6 +6,9 @@ import org.bukkit.WorldType;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import com.onarandombox.MultiverseCore.MultiverseCore;
@@ -14,12 +17,13 @@ import com.onarandombox.MultiverseCore.api.MVWorldManager;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-public class ResourceWorldResetter extends JavaPlugin {
+public class ResourceWorldResetter extends JavaPlugin implements Listener {
     private String worldName;
     private MultiverseCore core;
     private long resetInterval;
     private int restartTime;
     private int resetWarningTime;
+    private VersionChecker versionChecker;
 
     @Override
     public void onEnable() {
@@ -43,7 +47,29 @@ public class ResourceWorldResetter extends JavaPlugin {
         // Schedule daily resets
         scheduleDailyReset();
 
+        // Initialize version checker
+        String updateUrl = getConfig().getString("updateCheckUrl", "https://api.github.com/repos/Lozaine/ResourceWorldResetter/releases/latest");
+        versionChecker = new VersionChecker(this, updateUrl);
+        versionChecker.startVersionChecker();
+
+        // Register events
+        getServer().getPluginManager().registerEvents(this, this);
+
         getLogger().info("ResourceWorldResetter v" + getDescription().getVersion() + " enabled successfully!");
+    }
+
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        // Notify admin players about updates when they join
+        Player player = event.getPlayer();
+        if (player.hasPermission("resourceworldresetter.admin")) {
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    versionChecker.notifyPlayer(player);
+                }
+            }.runTaskLater(this, 40L); // Short delay after join to avoid message spam
+        }
     }
 
     private void loadConfig() {
@@ -256,6 +282,13 @@ public class ResourceWorldResetter extends JavaPlugin {
                 reloadPlugin(sender);
                 return true;
             }
+            else if (command.getName().equalsIgnoreCase("checkupdates")) {
+                sender.sendMessage("§a[ResourceWorldResetter] Checking for updates...");
+                versionChecker = new VersionChecker(this, getConfig().getString("updateCheckUrl",
+                        "https://api.github.com/repos/Lozaine/ResourceWorldResetter/releases/latest"));
+                versionChecker.startVersionChecker();
+                return true;
+            }
         } else {
             sender.sendMessage("§c[ResourceWorldResetter] You do not have permission to use this command.");
         }
@@ -270,3 +303,4 @@ public class ResourceWorldResetter extends JavaPlugin {
         sender.sendMessage("§a[ResourceWorldResetter] Plugin has been reloaded successfully.");
     }
 }
+

@@ -1,5 +1,5 @@
 name: ResourceWorldResetter
-version: '2.1.0'
+version: '2.1.1'
 main: com.lozaine.ResourceWorldResetter.ResourceWorldResetter
 api-version: '1.21'  # Updated to 1.21
 depend: [Multiverse-Core]
@@ -30,4 +30,9 @@ commands:
   reloadworldresetter:
     description: "Reload the ResourceWorldResetter plugin"
     usage: "/reloadworldresetter"
+    permission: "resourceworldresetter.admin"
+
+  checkupdates:
+    description: "Check for plugin updates"
+    usage: "/checkupdates"
     permission: "resourceworldresetter.admin"
