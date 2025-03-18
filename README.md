@@ -94,11 +94,6 @@ Before using **ResourceWorldResetter**, ensure you have installed the following 
 
 - [Multiverse-Core](https://dev.bukkit.org/projects/multiverse-core): Required for managing world creation, unloading, and deletion.
 
-## 💡 Potential Future Features
-
-- **Undo Setworld / Delete Setworld**: In case an incorrect world is selected for resetting, this feature may allow undoing the selection before the reset happens.
-
-> ⚠️ **Note**: These features are under consideration. No undo or recovery is currently available for already deleted worlds.
 
 ## 📄 License
 
