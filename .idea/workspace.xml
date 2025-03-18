@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e7a365e-a7c7-4849-8ee2-9aa682a65f58" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lozaine/ResourceWorldResetter/VersionChecker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/lozaine/ResourceWorldResetter/ResourceWorldResetter$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/lozaine/ResourceWorldResetter/ResourceWorldResetter$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/lozaine/ResourceWorldResetter/ResourceWorldResetter$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/lozaine/ResourceWorldResetter/ResourceWorldResetter.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/lozaine/ResourceWorldResetter/ResourceWorldResetter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lozaine/ResourceWorldResetter/ResourceWorldResetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lozaine/ResourceWorldResetter/ResourceWorldResetter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lozaine/ResourceWorldResetter/VersionChecker.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -162,7 +166,7 @@
       <option name="presentableId" value="Default" />
       <updated>1741775589275</updated>
       <workItem from="1741775590423" duration="6148000" />
-      <workItem from="1742298352848" duration="4487000" />
+      <workItem from="1742298352848" duration="6415000" />
     </task>
     <servers />
   </component>
